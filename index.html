@@ -46,6 +46,18 @@
             color: white;
             position: absolute;
         }
+
+        /* Scary clown style */
+        .scary-clown {
+            position: fixed;
+            font-size: 200px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.2s ease-out, opacity 0.5s ease;
+            opacity: 1;
+            z-index: 9999;
+        }
     </style>
 </head>
 <body>
@@ -58,9 +70,9 @@
 
     <script>
         function yesClick() {
-            showClown(); // prikaz klovna
+            showScaryClown();
 
-            // dodajemo mali delay da emoji prvo iskače pre promene stranice
+            // Delay pre nego što promenimo sadržaj
             setTimeout(() => {
                 document.body.innerHTML = `
                     <h1>💖</h1>
@@ -68,7 +80,7 @@
                     <p>Ali ozbiljno…</p>
                     <p><strong>zašto si mislila da imaš drugu opciju? 😏</strong></p>
                 `;
-            }, 200); // 200ms delay
+            }, 800); // klovn traje malo duže
         }
 
         function moveNo() {
@@ -79,26 +91,26 @@
             noBtn.style.top = y + "px";
         }
 
-        function showClown() {
+        function showScaryClown() {
             const clown = document.createElement("div");
             clown.textContent = "🤡";
-            clown.style.position = "fixed";
-            clown.style.fontSize = "50px";
-            clown.style.left = Math.random() * (window.innerWidth - 50) + "px";
-            clown.style.top = Math.random() * (window.innerHeight - 50) + "px";
-            clown.style.transition = "all 1s ease";
+            clown.classList.add("scary-clown");
             document.body.appendChild(clown);
 
-            // animacija: pomeranje gore i nestajanje
+            // Nagli jump scare efekat
             setTimeout(() => {
-                clown.style.transform = "translateY(-100px)";
-                clown.style.opacity = "0";
+                clown.style.transform = "translate(-50%, -50%) scale(1)";
             }, 50);
 
-            // uklanjanje elementa posle animacije
+            // Nestajanje posle 700ms
+            setTimeout(() => {
+                clown.style.opacity = "0";
+            }, 700);
+
+            // Uklanjanje iz DOM-a
             setTimeout(() => {
                 clown.remove();
-            }, 1050);
+            }, 1200);
         }
     </script>
 
