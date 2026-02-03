@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <title>Za Macu ❤️</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 12px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        #yes {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        #no {
+            background-color: #999;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Maco ❤️</h1>
+    <p>Da li želiš da budeš moj partner za Dan zaljubljenih? 💘</p>
+
+    <button id="yes" onclick="yesClick()">DA 😍</button>
+    <button id="no" onmouseover="moveNo()">NE 🙈</button>
+
+    <script>
+        function yesClick() {
+            document.body.innerHTML = `
+                <h1>Jeeeej! 💖</h1>
+                <p>Presrećio si me 😍</p>
+                <p>Vidimo se za Dan zaljubljenih, Maco ❤️</p>
+            `;
+        }
+
+        function moveNo() {
+            const x = Math.random() * (window.innerWidth - 120);
+            const y = Math.random() * (window.innerHeight - 60);
+            const noBtn = document.getElementById("no");
+            noBtn.style.left = x + "px";
+            noBtn.style.top = y + "px";
+        }
+    </script>
+
+</body>
+</html>
